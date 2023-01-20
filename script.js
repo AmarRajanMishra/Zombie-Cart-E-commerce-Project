@@ -30,62 +30,71 @@ const menuBtn = document.querySelector(".menu-icon span");
       /*---------Slidder Data------------ */
 
 
-// const sliderData = [
-//     {
-//         imgSrc : 'images/1.jpeg',
-//         sliderText : 'Text 1'
-//     },
-//     {
-//         imgSrc : 'images/2.png',
-//         sliderText : 'Text 2'
-//     },
-//     {
-//         imgSrc : 'images/3.jpg',
-//         sliderText : 'Text 3'
-//     },
-//     {
-//         imgSrc : 'images/3.jpg',
-//         sliderText : 'Text 4'
-//     },
 
-// ]
 
-// let sliderContainer = document.getElementById('slider-container')
-// // console.log(sliderContainer)
-// let data = sliderData.map((mydata)=>{
-//     return(
-//         `
-//         <div class="slides">
-//                 <img src="${mydata.imgSrc}" alt="" />
-//                 <div class="caption">${mydata.sliderText}</div>
-//             </div>
-//         `
-//     )
-// })
-// sliderContainer.innerHTML += data
 
-      /*---------Slider------------ */
-// let slider = document.getElementsByClassName('slides')
-// console.log(slider)
-// var arr = [2, 7, 4, 6]
-// console.log(arr)
+
+// Store of Main Slider
+const sliderData = [
+    {
+        imgSrc : 'images/1.jpeg',
+        Caption : 'Best Offer'
+    },
+    {
+        imgSrc : 'images/2.png',
+        Caption : 'Best Offer - 2'
+    },
+    {
+        imgSrc : 'images/3.jpg',
+        Caption : 'Best Offer -3'
+    },
+    {
+        imgSrc : 'images/3.jpg',
+        Caption : 'Best Offer -4'
+    },
+
+]
+let sliderContainer  = document.getElementById('slider-container')
+ let slidesData = sliderData.map((data)=>{
+    return(`
+    <div class="slides">
+                <img src="${data.imgSrc}" alt="" />
+                <div class="caption">${data.Caption}</div>
+            </div>
+    `)
+ })
+
+ sliderContainer.innerHTML += slidesData
+
+
+
+
+
+
+
+
+
 
 let slideIndex = 0;
 
 slideShow(slideIndex)
 function controller(x){
+    console.log('VAlue of x is : ', x)
     slideIndex += x;
-    // console.log(slideIndex)
+    // slideIndex = slideIndex+x;  0+1 = 1
+    console.log('SliderIndex Num is : ',slideIndex)
     slideShow(slideIndex)
 
 }
+
+
 function slideShow(num){
 
     let slider = document.getElementsByClassName('slides') 
     
     if(num === slider.length){
         slideIndex =0
-    num = 0
+        num = 0
     }
     if(num < 0){
         slideIndex = slider.length-1
@@ -93,7 +102,7 @@ function slideShow(num){
     }
     for(i of slider){
         i.style.display = 'none'
-    }
+    }       
     slider[num].style.display = 'block'
 
     
@@ -101,39 +110,32 @@ function slideShow(num){
 
 }
 
-// var arr = [2, 6, 7, 3]
-// for(var i = 0; i < arr.length; i++){
-//     console.log(arr[i])
-
-// }
-// for(value of arr){
-//     console.log(value)
-// }
-// console.log(arr)
 
 
 
 
-// let flag=0;
-// function controller(x){
-//     flag=flag+x;
-//     slideshow(flag);
-// }
-// slideshow(flag);
-// function slideshow(num){
-//     let slides=document.getElementsByClassName('slides')
-//     if(num==slides.length){
-//         flag=0;
-//         num=0;
-//     }
-//     if(num<0){
-//         flag=slides.length-1;
-//         num=slides.length-1;
-//     }
-//     for(let i of slides){
-//         i.style.display="none"
-//     }
-//     slides[num].style.display="block";
-// }
+
+
 
 /*  --------------Product Slider --------- */
+let box = document.getElementById('cardbox')
+console.log(box)
+
+const next = () => {
+    let width = box.clientWidth
+    // console.log(width)
+    box.scrollLeft = box.scrollLeft+width
+    console.log(box.scrollLeft)
+}
+const prev = () => {
+    let width = box.clientWidth
+    box.scrollLeft = box.scrollLeft-width
+    console.log(box.scrollLeft)
+}
+
+
+
+
+
+
+
